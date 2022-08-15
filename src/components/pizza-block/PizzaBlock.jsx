@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function PizzaBlock({title, price}) {
+function PizzaBlock({title, price, imageUrl}) {
     const [pizzaCount, setPizzaCount] = useState(0);
 
     const onClickAddButton = () => {
@@ -11,7 +11,7 @@ function PizzaBlock({title, price}) {
         <div className="pizza-block">
             <img
                 className="pizza-block__image"
-                src="https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"
+                src={imageUrl}
                 alt="Pizza"
             />
             <h4 className="pizza-block__title">{title}</h4>
