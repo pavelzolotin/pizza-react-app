@@ -8,17 +8,13 @@ function Categories() {
         'Все', 'Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые'
     ]
 
-    const onClickCategory = (index) => {
-        setActiveTab(index)
-    }
-
     return (
         <div className="categories">
             <ul>
                 {
                     categories.map((value, i) =>
                         <li
-                            onClick={() => onClickCategory(i)}
+                            onClick={() => setActiveTab(i)}
                             className={activeTab === i ? 'active' : ''}
                         >
                             {value}
