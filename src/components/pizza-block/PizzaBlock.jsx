@@ -1,6 +1,8 @@
 import { useState } from 'react';
 
-function PizzaBlock({title, price, imageUrl}) {
+function PizzaBlock({title, price, imageUrl, sizes, types}) {
+
+    const typeNames = ['тонкое', 'традиционное']
     const [pizzaCount, setPizzaCount] = useState(0);
 
     const onClickAddButton = () => {
@@ -17,14 +19,14 @@ function PizzaBlock({title, price, imageUrl}) {
             <h4 className="pizza-block__title">{title}</h4>
             <div className="pizza-block__selector">
                 <ul>
-                    <li className="active">тонкое</li>
-                    <li>традиционное</li>
+                    {
+                        types.map(typeID => <li>{typeNames[typeID]}</li>)
+                    }
                 </ul>
                 <ul>
-                    <li className="active">26 см.
-                    </li>
-                    <li>30 см.</li>
-                    <li>40 см.</li>
+                    {
+                        sizes.map(size => <li>{size} см.</li>)
+                    }
                 </ul>
             </div>
             <div className="pizza-block__bottom">
