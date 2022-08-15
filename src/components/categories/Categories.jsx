@@ -14,6 +14,7 @@ function Categories() {
                 {
                     categories.map((value, i) =>
                         <li
+                            key={i}
                             onClick={() => setActiveTab(i)}
                             className={activeTab === i ? 'active' : ''}
                         >
