@@ -5,5 +5,7 @@ import App from './components/app/App';
 
 const root = createRoot(document.getElementById('root'));
 root.render(
-    <App/>
+    <BrowserRouter>
+        <App/>
+    </BrowserRouter>
 );
