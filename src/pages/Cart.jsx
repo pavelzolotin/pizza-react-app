@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-const Cart = () => {
+function Cart() {
     return (
         <>
             <div className="container container--cart">

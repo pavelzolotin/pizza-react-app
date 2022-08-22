@@ -1,20 +1,29 @@
 import { useState } from 'react';
 
-function Sort() {
+function Sort({value, onChangeSort}) {
     const [openSort, setOpenSort] = useState(false);
-    const [selected, setSelected] = useState(0);
-    const list = ['популярности', 'цене', 'алфавиту'];
-    const selectedItem = list[selected];
+    const [sortOrder, setSortOrder] = useState(false)
+    const list = [
+        {name: 'популярности', sort: 'rating', sortByAsc: 'asc', orderBy: 'desc'},
+        {name: 'цене', sort: 'price', sortByAsc: 'asc', orderBy: 'desc'},
+        {name: 'алфавиту', sort: 'title', sortByAsc: 'asc', orderBy: 'desc'}
+    ];
 
     const onClickSelected = (i) => {
-        setSelected(i);
+        onChangeSort(i);
         setOpenSort(false)
+    }
+
+    const onSort = () => {
+        setSortOrder(sortOrder => !sortOrder)
     }
 
     return (
         <div className="sort">
             <div className="sort__label">
                 <svg
+                    onClick={() => onSort()}
+                    style={{'transform': sortOrder ? 'rotate(180deg)' : ''}}
                     width="10"
                     height="6"
                     viewBox="0 0 10 6"
@@ -27,18 +36,18 @@ function Sort() {
                     />
                 </svg>
                 <b>Сортировка по:</b>
-                <span onClick={() => setOpenSort(!openSort)}>{selectedItem}</span>
+                <span onClick={() => setOpenSort(!openSort)}>{value.name}</span>
             </div>
             {openSort && (
                 <div className="sort__popup">
                     <ul>
                         {
-                            list.map((item, i) =>
+                            list.map((obj, i) =>
                                 <li
                                     key={i}
-                                    onClick={() => onClickSelected(i)}
-                                    className={selected === i ? 'active' : ''}>
-                                    {item}
+                                    onClick={() => onClickSelected(obj)}
+                                    className={value.sort === obj.sort ? 'active' : ''}>
+                                    {obj.name}
                                 </li>
                             )
                         }

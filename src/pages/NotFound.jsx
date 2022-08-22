@@ -1,6 +1,6 @@
 import NotFoundBlock from '../components/NotFoundBlock/NotFoundBlock';
 
-const NotFound = () => {
+function NotFound() {
     return <NotFoundBlock/>
 }
 
